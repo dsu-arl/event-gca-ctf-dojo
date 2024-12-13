@@ -1,1 +1,14 @@
 name: Cryptography
+challenges:
+- id: caesar-cipher-encryption
+  name: Caesar Cipher Encryption
+  allow_privileged: false
+- id: caesar-cipher-decryption
+  name: Caesar Cipher Decryption
+  allow_privileged: false
+- id: caesar-cipher-scripting
+  name: Caesar Cipher Scripting
+  allow_privileged: false
+- id: caesar-cipher-brute-force
+  name: Caesar Cipher Brute Force
+  allow_privileged: false
