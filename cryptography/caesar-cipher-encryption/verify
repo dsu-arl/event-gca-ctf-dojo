@@ -1,0 +1,82 @@
+#!/opt/pwn.college/python
+import sys
+import os
+import re
+import random
+import string
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def caesar_cipher_shift(word, shift):
+    shifted_word = ""
+    for char in word:
+        if char.isalpha():  # Only shift alphabetic characters
+            offset = ord('A') if char.isupper() else ord('a')
+            # Shift character within the alphabet range using modulo 26
+            shifted_char = chr((ord(char) - offset + shift) % 26 + offset)
+            shifted_word += shifted_char
+        else:
+            shifted_word += char  # Non-alphabet characters remain unchanged
+    return shifted_word
+
+# Display welcome message and alphabet with indices
+def display_alphabet_with_indices():
+    letters = "  ".join(string.ascii_uppercase)
+    numbers = "  ".join(str(i) for i in range(1, 10))
+    numbers2 = " ".join(str(i) for i in range(10, 27))
+    print(letters)
+    print(numbers + " " + numbers2)
+
+# Main function to execute the cipher game
+def play_cipher_game():
+    print("Welcome to the Caesar Cipher Encrypter!")
+    word_list = [
+        "Blue",
+        "Gray",
+        "Pink",
+        "Green",
+        "Brown",
+        "Gold",
+        "Lime",
+        "Cyan",
+        "Peach",
+        "Black",
+        "Red",
+        "White",
+        "Purple",
+        "Tan",
+        "Olive"
+    ]
+
+    secret = random.choice(word_list).upper()
+    shift = random.randint(3, 8)
+
+    print(f"Your task is to encrypt this word: {secret}")
+    print("You can use this table to help you!\n")
+    display_alphabet_with_indices()
+
+    print(f"\nYou need to encrypt your word with a shift of +{shift}. Move each letter forward by {shift}.\n")
+
+    # Encrypt the secret word with the actual shift for comparison
+    encrypted_secret = caesar_cipher_shift(secret, shift)
+
+    # Prompt the user to encrypt each character
+    for original_char, expected_char in zip(secret, encrypted_secret):
+        guess = input(f"Encrypt this character - {original_char}: ").upper()
+        if guess != expected_char:
+            print("\nSorry, that letter was not correct. Try again!")
+            print(f"The original word {secret} shifted by {shift} should be {encrypted_secret}.")
+            print("Hint: For each letter, look at the table and add the amount it needs to be shifted by.")
+            print("And remember, the cipher will wrap around if you need to go past the letter 'Z'.")
+            return  # Exit the function if there's an incorrect guess
+
+    print(f"\nCongratulations, you encrypted it correctly! The encrypted word is {encrypted_secret}")
+    print_flag()
+
+# Run the game
+play_cipher_game()
