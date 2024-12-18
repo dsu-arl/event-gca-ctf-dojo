@@ -4,7 +4,8 @@ In this challenge, you will learn about the **Substitution Cipher**! A substitut
 Substitution ciphers have been used historically for secret communication and remain a foundational concept in cryptography.  
 
 ### How It Works:  
-**Substitution Key:** The key to a substitution cipher is the mapping between the original alphabet and the substituted alphabet. For example:  
+**Substitution Key:** The key to a substitution cipher is the mapping between the original alphabet and the substituted alphabet. 
+This key can be random or based on a secret word/pattern. For example:  
 
 ```
    Original: A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z  
