@@ -3,3 +3,5 @@ name: CTF
 modules:
 - id: cryptography
   name: Cryptography
+- id: steganography
+  name: Steganography
