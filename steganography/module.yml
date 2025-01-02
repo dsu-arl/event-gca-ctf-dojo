@@ -1,0 +1,5 @@
+name: Steganography
+challenges:
+- id: steganography-intro
+  name: Steganography - Intro
+  allow_privileged: false
