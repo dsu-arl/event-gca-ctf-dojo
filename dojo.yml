@@ -4,4 +4,4 @@ modules:
 - id: cryptography
   name: Cryptography
 - id: steganography
-  name: steganography
+  name: Steganography
