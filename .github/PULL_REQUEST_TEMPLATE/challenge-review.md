@@ -1,8 +1,8 @@
 Assignee Checklist:
-- [ ] Mark yourself as the assignee if you are the one who worked on it
-- [ ] Add the `new challenge` label if it's a new challenge, `edit challenge` if it's for an existing challenge
-- [ ] Link the pull request to the correct issue
-- [ ] Copy and paste pull request URL into PACE Teams channel for someone to review
+- [x] Mark yourself as the assignee if you are the one who worked on it
+- [x] Add the `new challenge` label if it's a new challenge, `edit challenge` if it's for an existing challenge
+- [x] Link the pull request to the correct issue
+- [x] Copy and paste pull request URL into PACE Teams channel for someone to review
 
 Reviewer Checklist:
 - [ ] Mark yourself as the reviewer
