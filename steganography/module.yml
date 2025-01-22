@@ -3,3 +3,6 @@ challenges:
 - id: smooth-pixel
   name: Smooth Pixel
   allow_privileged: false
+- id: maximum-compression
+  name: Maximum Compression
+  allow_privileged: false
