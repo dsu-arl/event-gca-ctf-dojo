@@ -2,7 +2,7 @@
 
 cp /flag /challenge/flag
 
-passwords=($(for i in $(seq -f "%04g" 0 9999 | shuf -n 3);do echo -n $i\ ;done))
+passwords=($(for i in $(seq -f "%04g" 0 9999 | shuf -n 100);do echo -n $i\ ;done))
 input_file="/challenge/flag"
 
 for (( i=0; i<${#passwords[@]}; i++ ))
