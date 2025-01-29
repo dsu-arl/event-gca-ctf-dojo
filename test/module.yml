@@ -1,0 +1,5 @@
+name: TEST
+challenges:
+- id: example-challenge
+  name: example challenge
+  allow_privileged: false
