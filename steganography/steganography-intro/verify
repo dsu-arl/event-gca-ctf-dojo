@@ -3,10 +3,21 @@ import sys
 sys.path.append('/challenge')
 
 def print_flag():
-	try:
-		with open("/flag", "r") as f:
-			print(f.read())
-	except FileNotFoundError:
-		print("Error: Flag file not found.")
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
 
-# Add your imports and other code below here
+
+def main ():
+    ans = input("Please enter the passphrase contained in the file: ")
+    correct_decoded_string = "Congrats you found the hidden information"
+    if ans.strip() == correct_decoded_string:
+        print("Congratulations! Here is your flag!")
+        print_flag()
+    else:
+        print("Sorry, that was incorrect!")
+
+if __name__ == "__main__":
+    main ()
