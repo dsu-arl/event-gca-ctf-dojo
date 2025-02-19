@@ -1,0 +1,156 @@
+#!/opt/pwn.college/python
+import sys
+sys.path.append('/challenge')
+
+
+
+# use md5 hash of decrypted to check
+def print_flag():
+	try:
+		with open("/flag", "r") as f:
+			print(f.read())
+	except FileNotFoundError:
+		print("Error: Flag file not found.")
+
+# Add your imports and other code below here
+from Crypto.Cipher import DES
+from os import urandom
+
+
+def xor_bytes(data: bytes, key: bytes) -> bytes:
+    key_repeated = (key * (len(data) // len(key) + 1))[:len(data)]
+    return bytes(a ^ b for a, b in zip(data, key_repeated))
+
+
+def getDesCipher():
+
+	iv = ''
+	while(len(iv) != 8):
+		iv = input("Enter 8-byte IV formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\nDefault: 0x1337c0deb33fc0de\n> ").replace("0x","")
+		if(iv == ''):
+			iv = bytes.fromhex("1337c0deb33fc0de")
+			break
+		try:
+			iv = bytes.fromhex(iv)
+			if(len(iv) != 8):
+				raise Exception("IV must be 8 bytes long.")
+		except Exception as e:
+			# print(iv)
+			print(e)
+			iv = ''
+			print("Error reading value.")
+
+	key = ''
+	inp = ''
+	while (inp != 'y' and inp != 'n'):
+		inp = input("\nBy default, this tool randomly generates a key.\nWould you like to manually enter a key instead?(Y/N)?\n> ").lower()
+
+	if(inp == 'y'):
+		while(len(key) != 8):
+			key = input("Please be sure to use a STRONG key. Enter 8-byte key formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\n> ").replace("0x","")
+			try:
+				key = bytes.fromhex(key)
+				if(len(key) != 8):
+					raise Exception("Key must be 8 bytes long.")
+			except Exception as e:
+				print(e)
+				key = ''
+				print("Error reading value.")
+
+	else: 
+		key = urandom(8)
+
+
+	print(f"\nIV and Key set:\nIV: {iv.hex()}\nKey: {key.hex()}\n")
+	desEnc = DES.new(key, DES.MODE_OFB, iv)
+	desDec = DES.new(key, DES.MODE_OFB, iv)
+	return desEnc, desDec
+
+def getCiphertext(des):
+	pText = ''
+	while(pText == ''):
+		pText = input("Enter plaintext formatted as a normal string.\nExample:  <This is my message!>\n> ")
+		try:
+			pText = pText.encode("utf-8")
+		except Exception as e:
+			# print(iv)
+			print(e)
+			pText = ''
+			print("Error reading plaintext.")
+	
+	cText = des.encrypt(pText)
+
+	print("Encrypted message (hex): ", cText.hex())
+
+
+def getPlaintext(des):
+	ctext = ''
+	while(len(ctext) == 0):
+		ctext = input("Enter ciphertext formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\n> ").replace("0x","")
+		try:
+			ctext = bytes.fromhex(ctext)
+		except Exception as e:
+			print(e)
+			ctext = ''
+			print("Error reading value.")
+
+	try: 
+		ptext = des.decrypt(ctext)
+		print("Plaintext: ", ptext)
+	except Exception as e:
+		print(e)
+		print("Error during encryption.")
+	
+
+
+# ctext = "a7d48182628b4d89fedddb8aaec4d0c8dc918c8026e223c3b38ddd9dbbc8ce869e96c1ce23ac0ec4978ad3cfbddfdb8a809c848065c82891aa8df7cfbaccd381d0df888f30e20d8baa8ddd8eabcad69bdc91ca8d23b71981fec0c7cfbcc8db9f95c3cd8527b21ec4bcc8db9fb7c399e5bede9ace2bb64d97fed9d782bb8dd8808291808b62b605c4b3ccd58afec0c7cf99dc9d9c27b1198db1c39e89bbc1cae5a3decd9d2bb64a86bfced5c3fedfdb8391c9c1ce23ac0ec4add9cc8eae8dd181d0c8829b30e21981bfd99e8dbbc1caef"
+# iv = "deadbeefdeadbeef"
+
+# ctext = bytes.fromhex(ctext)
+# iv = bytes.fromhex(iv)
+
+
+# print(xor_bytes(ctext, iv))
+
+
+desEnc = None
+desDec = None
+while(True):
+	if(desEnc != None and desDec != None):
+		desStr = "DES initialized!"
+	else:
+		desStr = "DES not initialized. Please set Key and IV."
+
+	choice = input(f"""Choose an option:
+
+1) Simulate 1 round of DES encryption using a custom key and IV
+2) Set Key and IV for DES 
+3) Encrypt plaintext using DES ({desStr})
+4) Decrypt ciphertext using DES ({desStr})
+5) Quit\n\n> """)
+
+	if(choice == '1'):
+		xor_bytes()
+	elif(choice == '2'):
+		desEnc,desDec = getDesCipher()
+	elif(choice == '3'):
+		if(desEnc == None):
+			print("Please initialize DES!")
+			continue
+		else:
+			getCiphertext(desEnc)
+	elif(choice == '4'):
+		if(desDec == None):
+			print("Please initialize DES!")
+			continue
+		else:
+			getPlaintext(desDec)
+	elif(choice == '5'):
+		print("Goodbye!")
+		break
+	else:
+		print("Invalid choice.")
+
+# des = getDesCipher()
+# getCiphertext(des)
+
