@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+from PIL import Image
+import zipfile
+import numpy
+import io
+
+def getFlag() -> str:
+    with open("/flag.txt", "r") as fp:
+        return fp.read()
+
+def getMakeImage() -> io.BytesIO:
+    # Make 100x100 image with random colors
+    imarray = numpy.random.rand(100,100,3) * 255
+    im = Image.fromarray(imarray.astype('uint8')).convert('RGBA')
+
+    # Save to memory buffer
+    img_buffer = io.BytesIO()
+    im.save(img_buffer, format='PNG')
+    return img_buffer
+
+
+def getMakeZipFile() -> io.BytesIO:
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+        zip_file.writestr("flag.txt", getFlag())
+    return zip_buffer
+
+if __name__ == "__main__":
+    # Make image buffer to save to
+    img = getMakeImage()
+
+    # Write zip file
+    img.seek(0,2)
+    zip = getMakeZipFile()
+    img.write(zip.getvalue())
+
+    # Save final image
+    with open("flag.png", "wb") as fp:
+        fp.write(img.getvalue())

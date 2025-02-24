@@ -6,3 +6,6 @@ challenges:
 - id: maximum-compression
   name: Maximum Compression
   allow_privileged: false
+- id: are-you-png
+  name: Are You PNG
+  allow_privileged: false
