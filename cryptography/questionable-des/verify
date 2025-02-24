@@ -13,6 +13,10 @@ def print_flag():
 		print("Error: Flag file not found.")
 
 # Add your imports and other code below here
+import importlib
+
+Crypto = importlib.import_module("Crypto")
+from Crypto.Cipher import AES
 from Crypto.Cipher import DES
 from os import urandom
 from hashlib import md5
