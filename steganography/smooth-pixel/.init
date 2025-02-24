@@ -57,7 +57,7 @@ def encode():
     if charPos >= charMax:
       break
 
-  im.save("/home/hacker/challenge.png")
+  im.save("/home/hacker/flag.png")
 
 if __name__ == "__main__":
   encode()
