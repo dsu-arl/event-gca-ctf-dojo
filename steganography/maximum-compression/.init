@@ -1,9 +1,9 @@
 #!/opt/pwn.college/bash
 
-cp /flag /challenge/flag
+cp /flag flag
 
 passwords=($(for i in $(seq -f "%04g" 0 9999 | shuf -n 100);do echo -n $i\ ;done))
-input_file="/challenge/flag"
+input_file="flag"
 
 for (( i=0; i<${#passwords[@]}; i++ ))
 do
@@ -13,5 +13,6 @@ do
     mv "$zip_name" "$input_file"
 done
 
+rm flag
 mv "${input_file}" /home/hacker/flag.zip
 chmod 777 /home/hacker/flag.zip
