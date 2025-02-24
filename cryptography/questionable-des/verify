@@ -15,11 +15,41 @@ def print_flag():
 # Add your imports and other code below here
 from Crypto.Cipher import DES
 from os import urandom
+from hashlib import md5
+
+def xor_bytes() -> bytes:
+	data = ''
+	while(len(data) == 0):
+		data = input("Enter data to be XORed formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\n> ").replace("0x","")
+		try:
+			data = bytes.fromhex(data)
+		except Exception as e:
+			print(e)
+			data = ''
+			print("Error reading value.")
+	
+	key = ''
+	while(len(key) != 8):
+		key = input("Enter 8-byte key formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\n> ").replace("0x","")
+		try:
+			key = bytes.fromhex(key)
+			if(len(key) != 8):
+				raise Exception("Key must be 8 bytes long.")
+		except Exception as e:
+			print(e)
+			key = ''
+			print("Error reading value.")
 
 
-def xor_bytes(data: bytes, key: bytes) -> bytes:
-    key_repeated = (key * (len(data) // len(key) + 1))[:len(data)]
-    return bytes(a ^ b for a, b in zip(data, key_repeated))
+	key_repeated = (key * (len(data) // len(key) + 1))[:len(data)]
+	result = bytes(a ^ b for a, b in zip(data, key_repeated))
+
+	resultStr = result
+	try:
+		resultStr = result.decode("utf-8")
+	except:
+		pass
+	print("\nRESULT (hex): ", result.hex(), "\n\nRESULT (raw): ", result, "\n")
 
 
 def getDesCipher():
@@ -80,7 +110,7 @@ def getCiphertext(des):
 	
 	cText = des.encrypt(pText)
 
-	print("Encrypted message (hex): ", cText.hex())
+	print("\nEncrypted message (hex): ", cText.hex())
 
 
 def getPlaintext(des):
@@ -96,7 +126,11 @@ def getPlaintext(des):
 
 	try: 
 		ptext = des.decrypt(ctext)
-		print("Plaintext: ", ptext)
+		try:
+			ptext = ptext.decode("utf-8")
+		except:
+			pass
+		print("\nPlaintext: ", ptext)
 	except Exception as e:
 		print(e)
 		print("Error during encryption.")
@@ -127,7 +161,8 @@ while(True):
 2) Set Key and IV for DES 
 3) Encrypt plaintext using DES ({desStr})
 4) Decrypt ciphertext using DES ({desStr})
-5) Quit\n\n> """)
+5) <CHALLENGE> Submit answer
+6) Quit\n\n> """)
 
 	if(choice == '1'):
 		xor_bytes()
@@ -146,6 +181,14 @@ while(True):
 		else:
 			getPlaintext(desDec)
 	elif(choice == '5'):
+		answer = input("Please copy-paste the entire decoded message from Alice. (Leading/trailing whitespace is not important)\n>").strip()
+		ansHash = md5(answer.encode()).digest().hex()
+
+		# print(ansHash)
+		if(ansHash == "12dfd062638b9765191bf14fbf8b013f"):
+			print_flag()
+
+	elif(choice == '6'):
 		print("Goodbye!")
 		break
 	else:
