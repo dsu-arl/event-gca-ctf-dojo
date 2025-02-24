@@ -36,5 +36,5 @@ if __name__ == "__main__":
     img.write(zip.getvalue())
 
     # Save final image
-    with open("flag.png", "wb") as fp:
+    with open("/home/hacker/flag.png", "wb") as fp:
         fp.write(img.getvalue())
