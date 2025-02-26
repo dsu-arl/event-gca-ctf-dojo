@@ -4,7 +4,6 @@ sys.path.append('/challenge')
 
 
 
-# use md5 hash of decrypted to check
 def print_flag():
 	try:
 		with open("/flag", "r") as f:
@@ -14,10 +13,17 @@ def print_flag():
 
 # Add your imports and other code below here
 
-from Crypto.Cipher import DES
-from os import urandom
-from hashlib import md5
+try:
+	from Crypto.Cipher import DES
+	from os import urandom
+	from hashlib import md5
 
+except Exception as e:
+	print(e)
+	print("\nPlease run tool using the command: \n./verify (or <path_to_verify>) \nor \npython3.8 <path_to_verify>")
+
+
+# simulate 1 round of DES block mode
 def xor_bytes() -> bytes:
 	data = ''
 	while(len(data) == 0):
@@ -52,9 +58,8 @@ def xor_bytes() -> bytes:
 		pass
 	print("\nRESULT (hex): ", result.hex(), "\n\nRESULT (raw): ", result, "\n")
 
-
+# sets iv and key for DES objects for encryption/decryption
 def getDesCipher():
-
 	iv = ''
 	while(len(iv) != 8):
 		iv = input("Enter 8-byte IV formatted as hex.\nExample:  <0x1122334455667788> OR <1122334455667788>\nDefault: 0x1337c0deb33fc0de\n> ").replace("0x","")
@@ -97,6 +102,7 @@ def getDesCipher():
 	desDec = DES.new(key, DES.MODE_OFB, iv)
 	return desEnc, desDec
 
+# encrypt a message
 def getCiphertext(des):
 	pText = ''
 	while(pText == ''):
@@ -113,7 +119,7 @@ def getCiphertext(des):
 
 	print("\nEncrypted message (hex): ", cText.hex())
 
-
+# decrypt a m essage
 def getPlaintext(des):
 	ctext = ''
 	while(len(ctext) == 0):
@@ -136,16 +142,6 @@ def getPlaintext(des):
 		print(e)
 		print("Error during encryption.")
 	
-
-
-# ctext = "a7d48182628b4d89fedddb8aaec4d0c8dc918c8026e223c3b38ddd9dbbc8ce869e96c1ce23ac0ec4978ad3cfbddfdb8a809c848065c82891aa8df7cfbaccd381d0df888f30e20d8baa8ddd8eabcad69bdc91ca8d23b71981fec0c7cfbcc8db9f95c3cd8527b21ec4bcc8db9fb7c399e5bede9ace2bb64d97fed9d782bb8dd8808291808b62b605c4b3ccd58afec0c7cf99dc9d9c27b1198db1c39e89bbc1cae5a3decd9d2bb64a86bfced5c3fedfdb8391c9c1ce23ac0ec4add9cc8eae8dd181d0c8829b30e21981bfd99e8dbbc1caef"
-# iv = "deadbeefdeadbeef"
-
-# ctext = bytes.fromhex(ctext)
-# iv = bytes.fromhex(iv)
-
-
-# print(xor_bytes(ctext, iv))
 
 
 desEnc = None
@@ -185,16 +181,14 @@ while(True):
 		answer = input("Please copy-paste the entire decoded message from Alice. (Leading/trailing whitespace is not important)\n>").strip()
 		ansHash = md5(answer.encode()).digest().hex()
 
-		# print(ansHash)
+		# md5sum of alice's msg
 		if(ansHash == "12dfd062638b9765191bf14fbf8b013f"):
 			print_flag()
+			break
 
 	elif(choice == '6'):
 		print("Goodbye!")
 		break
 	else:
 		print("Invalid choice.")
-
-# des = getDesCipher()
-# getCiphertext(des)
 
