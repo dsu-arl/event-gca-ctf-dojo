@@ -1,0 +1,5 @@
+name: Networking
+challenges:
+- id: nmap-1
+  name: NMAP 1
+  allow_privileged: false

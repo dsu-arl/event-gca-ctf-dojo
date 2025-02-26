@@ -5,3 +5,5 @@ modules:
   name: Cryptography
 - id: steganography
   name: Steganography
+- id: networking
+  name: Networking
