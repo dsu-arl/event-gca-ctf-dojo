@@ -154,14 +154,16 @@ while(True):
 
 	choice = input(f"""Choose an option:
 
-1) Simulate 1 round of DES encryption using a custom key and IV
-2) Set Key and IV for DES 
-3) Encrypt plaintext using DES ({desStr})
-4) Decrypt ciphertext using DES ({desStr})
+
+1) Set Key and IV for DES 
+2) Encrypt plaintext using DES ({desStr})
+3) Decrypt ciphertext using DES ({desStr})
+4) Simulate 1 round of DES encryption using a custom key and IV
 5) <CHALLENGE> Submit answer
 6) Quit\n\n> """)
 
-	if(choice == '1'):
+	# choices are out of order because they were switched after creation :)
+	if(choice == '4'):
 		xor_bytes()
 	elif(choice == '2'):
 		desEnc,desDec = getDesCipher()
@@ -171,7 +173,7 @@ while(True):
 			continue
 		else:
 			getCiphertext(desEnc)
-	elif(choice == '4'):
+	elif(choice == '1'):
 		if(desDec == None):
 			print("Please initialize DES!")
 			continue
