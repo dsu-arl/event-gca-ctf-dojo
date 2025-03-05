@@ -162,23 +162,29 @@ while(True):
 5) <CHALLENGE> Submit answer
 6) Quit\n\n> """)
 
-	# choices are out of order because they were switched after creation :)
-	if(choice == '4'):
-		xor_bytes()
-	elif(choice == '2'):
+	if(choice == '1'):
 		desEnc,desDec = getDesCipher()
-	elif(choice == '3'):
+
+
+
+	elif(choice == '2'):
 		if(desEnc == None):
 			print("Please initialize DES!")
 			continue
 		else:
 			getCiphertext(desEnc)
-	elif(choice == '1'):
+
+	elif(choice == '3'):
 		if(desDec == None):
 			print("Please initialize DES!")
 			continue
 		else:
 			getPlaintext(desDec)
+
+
+	elif(choice == '4'):
+		xor_bytes()
+
 	elif(choice == '5'):
 		answer = input("Please copy-paste the entire decoded message from Alice. (Leading/trailing whitespace is not important)\n>").strip()
 		ansHash = md5(answer.encode()).digest().hex()
@@ -187,6 +193,8 @@ while(True):
 		if(ansHash == "12dfd062638b9765191bf14fbf8b013f"):
 			print_flag()
 			break
+		else:
+			print("\nSorry, incorrect!\n")
 
 	elif(choice == '6'):
 		print("Goodbye!")
