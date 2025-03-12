@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+#!/usr/bin/env python3.8
+
+
+def get_flag() -> str:
+    with open("/flag", "r") as fp:
+        return fp.read().strip()
+
+
+def create_pdf(text: str) -> None:
+    file = open("/home/hacker/challenge.pdf", "w")
+    if not file:
+        print("Couldn't open file for writing")
+        exit(1)
+
+    try:
+        file.write(f"""
+        %%PDF-1.4\n
+        1 0 obj\n
+        << /Type /Catalog /Pages 2 0 R >>\n
+        endobj\n
+        2 0 obj\n
+        << /Type /Pages /Count 1 /Kids [3 0 R] >>\n
+        endobj\n
+        3 0 obj\n
+        << /Type /Page /Parent 2 0 R /Contents 4 0 R >>\n
+        endobj\n
+        4 0 obj\n
+        << /Length {len(text)+100} >>\n
+        stream\n
+        0 0 0 rg   12 600 588 50 re f \n
+        BT /F1 24 Tf 72 720 Td (I've redacted the flag!) Tj ET\n
+        BT /F1 24 Tf 72 620 Td ({text}) Tj ET\n
+        endstream\n
+        endobj\n
+        5 0 obj\n
+        << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\n
+        endobj\n
+        xref\n
+        0 6\n
+        0000000000 65535 f\n
+        0000000010 00000 n\n
+        0000000060 00000 n\n
+        0000000110 00000 n\n
+        0000000210 00000 n\n
+        0000000310 00000 n\n
+        trailer\n
+        << /Size 6 /Root 1 0 R >>\n
+        startxref\n
+        344\n
+        %%EOF\n
+        """)
+    finally:
+        file.close()
+
+if __name__ == "__main__":
+    create_pdf( get_flag() )

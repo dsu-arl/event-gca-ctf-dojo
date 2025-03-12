@@ -3,3 +3,6 @@ challenges:
 - id: smooth-pixel
   name: Smooth Pixel
   allow_privileged: false
+- id: redacted
+  name: REDACTED
+  allow_privileged: false
