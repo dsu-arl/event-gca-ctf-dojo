@@ -1,0 +1,5 @@
+name: Cyber History
+challenges:
+- id: phreaking
+  name: Phreaking
+  allow_privileged: false
