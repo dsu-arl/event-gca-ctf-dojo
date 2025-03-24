@@ -21,3 +21,6 @@ challenges:
 - id: ascii-encoding
   name: ASCII Encoding
   allow_privileged: false
+- id: ascii-decoding
+  name: ASCII Decoding
+  allow_privileged: false
