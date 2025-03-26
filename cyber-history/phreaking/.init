@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python /challenge/app.py &
-firefox http://127.0.0.1:8080 &
+#python /challenge/app.py &
+#firefox http://127.0.0.1:8080 &
