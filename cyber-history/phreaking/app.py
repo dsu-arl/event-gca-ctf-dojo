@@ -60,7 +60,7 @@ class handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     ip = '127.0.0.1'
-    port = 8080
+    port = 5000
     with HTTPServer((ip, port), handler) as server:
         print(f"Server started at http://{ip}:{port}")
         server.serve_forever()
