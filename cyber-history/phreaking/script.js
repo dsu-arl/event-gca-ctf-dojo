@@ -81,7 +81,7 @@ document.querySelectorAll('.phone-booth .key').forEach(button => {
             screen.textContent = "Calling...";
         } else if(freeCall && screen.textContent == "7552099") {
 
-            fetch("http://127.0.0.1:8080/", {
+            fetch("http://127.0.0.1:5000/", {
                 method: "POST",
                 body: JSON.stringify({
                     verify: `${document.querySelector(".phone-booth").innerHTML}`
