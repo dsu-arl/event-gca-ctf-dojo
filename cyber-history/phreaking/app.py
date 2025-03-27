@@ -3,6 +3,8 @@ import shutil
 import json
 import os
 
+full_path = "/challenge/"
+
 def get_flag():
     with open("/flag", "r") as fp:
         return fp.read()
@@ -17,6 +19,7 @@ class handler(BaseHTTPRequestHandler):
         basename = self.path.strip().split('/')[-1]
         if basename == '':
             basename = "index.html"
+        basename = full_path + basename
 
         # Check if file exists and its in the folder
         if not os.path.exists(basename):
