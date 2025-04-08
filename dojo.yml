@@ -9,3 +9,4 @@ modules:
   name: Testing
 - id: web
   name: Web
+  image: copsahl/pwncollege-web
