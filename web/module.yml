@@ -1,0 +1,4 @@
+name: web
+challenges:
+  - id: am-i-admin
+    name: Am I Admin?
