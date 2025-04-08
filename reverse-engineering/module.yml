@@ -1,0 +1,5 @@
+name: Reverse Engineering
+challenges:
+- id: string-analysis
+  name: String Analysis
+  allow_privileged: false
