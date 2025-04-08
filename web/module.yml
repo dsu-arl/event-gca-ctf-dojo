@@ -4,3 +4,5 @@ challenges:
     name: Am I Admin?
   - id: am-i-admin-2
     name: Am I Admin?
+  - id: forceful-browsing
+    name: Forceful Browsing
