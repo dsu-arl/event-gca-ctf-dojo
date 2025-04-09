@@ -12,3 +12,4 @@ modules:
   image: copsahl/pwncollege-web
 - id: reverse-engineering
   name: Reverse Engineering
+  image: whatupdoc6130/pwncollege:stringsv1
