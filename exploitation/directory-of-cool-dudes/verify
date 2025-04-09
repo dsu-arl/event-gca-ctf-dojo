@@ -1,0 +1,218 @@
+#!/opt/pwn.college/python
+import sys
+sys.path.append('/challenge')
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            flag = f.read()
+            print(flag)
+            return flag
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+# Add your imports and other code below here
+from flask import Flask, request, render_template_string, redirect, url_for, jsonify
+
+app = Flask(__name__)
+
+
+# example cool dudes
+examplePerson1 = {
+    "name": "Jenny Sparks",
+    "info": (
+        "Loves electricity and thinks lightning is misunderstood.",
+        "Tesla coils, thunderstorms, neon signs",
+        "Paper cuts, weak magnets, bad puns"
+    )
+}
+
+
+examplePerson2 = {
+    "name": "Dr. Maple",
+    "info": (
+        "A chill professor who always carries maple syrup in her bag.",
+        "Pancakes, jazz music, crossword puzzles",
+        "Loud noises, burnt toast, fast fashion"
+    )
+}
+
+examplePerson3 = {
+    "name": "Captain Fog",
+    "info": (
+        "Former sailor turned poet, speaks mostly in metaphors.",
+        "Stormy weather, lighthouses, sea shanties",
+        "Landlocked cities, plastic bottles, bananas"
+    )
+}
+
+examplePerson4 = {"name": "Mr. Ross", 
+    "info": (
+        '''This guy is <b>RADICAL</b> and knows everything there is to know about <span style="color: red">C</span><span style="color: blue">O</span><span style="color: orange">L</span><span style="color: green">O</span><span style="color: purple">R</span>!''',
+        "Painting, trees (happy), squirrels", 
+        "Brutalist architecture, his afro (keep this on the DL)"
+    )
+}
+
+examplePerson5 = {
+    "name": "Professor Gumshoe",
+    "info": (
+        "World’s leading expert on bubble gum archaeology.",
+        "Ancient wrappers, pink things, detective novels",
+        "Mint flavor, museums without gift shops, flat soda"
+    )
+}
+
+examplePerson6 = {
+    "name": "Tina Blink",
+    "info": (
+        "She once blinked for 12 hours straight to win a bet.",
+        "Staring contests, modern art, sunflower seeds",
+        "Unblinking dolls, small spoons, ketchup"
+    )
+}
+
+examplePerson7 = {
+    "name": "Uncle Vinnie",
+    "info": (
+        "Has a story for everything, none of them believable.",
+        "Old maps, garage sales, root beer floats",
+        "Digital clocks, pigeons, unsolicited advice"
+    )
+}
+
+examplePerson8 = {
+    "name": "Marla Byte",
+    "info": (
+        "Claims she can debug code with her mind.",
+        "Binary jokes, coffee at 3am, keyboard clacks",
+        "Touch screens, slow Wi-Fi, low battery alerts"
+    )
+}
+
+examplePerson9 = {
+    "name": "Waldo Flex",
+    "info": (
+        "No one can ever find him, even in his own house.",
+        "Hide-and-seek, optical illusions, stripes",
+        "Being tagged in photos, GPS, loud shirts"
+    )
+}
+
+examplePerson10 = {
+    "name": "Grandma Zoom",
+    "info": (
+        "Rides a motorbike and knits at 120 mph.",
+        "Speed knitting, techno music, hot cocoa",
+        "Red lights, tangled yarn, slow walkers"
+    )
+}
+
+examplePerson11 = {
+    "name": "Echo Luna",
+    "info": (
+        "Speaks only in rhymes and sometimes backwards.",
+        "Poetry slams, caves, full moons",
+        "Straightforward answers, clocks ticking, the number seven"
+    )
+}
+
+
+examplePeople = [examplePerson1, examplePerson2, examplePerson3, examplePerson4, examplePerson5, examplePerson6, examplePerson7, examplePerson8, examplePerson9, examplePerson10, examplePerson11]
+directory = {}
+
+# Template for main page
+INDEX_PAGE = """\
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>People Directory</title>
+</head>
+<body>
+    <h1>Add a Cool Dude below! </h1>
+    <form method=\"post\" action=\"/add\">
+        <input type=\"text\" name=\"name\" placeholder=\"Name\" required></br>
+        <input type=\"text\" name=\"likes\" placeholder=\"Likes\" required></br>
+        <input type=\"text\" name=\"dislikes\" placeholder=\"Dislikes\" required></br>
+		<textarea name=\"bio\" placeholder=\"Bio\" required></textarea></br>
+
+        <button type=\"submit\">Add Person</button>
+    </form>
+    <h2>Directory</h2>
+    <ul>
+        {% for name in directory.keys() %}
+            <li><a href=\"/person/{{ name }}\">{{ name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+"""
+
+# Template for person page
+PERSON_PAGE = """\
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>{{ name }}'s Page</title>
+</head>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<body>
+    <h1>{{ name }}</h1>
+    <p><b>About:</b> {{ bio | safe }}</p>
+    <p><b>Likes:</b> {{ likes }}</p>
+    <p><b>Dislikes:</b> {{ dislikes }}</p>
+    <a href=\"/\">Back to Directory</a>
+</body>
+</html>
+"""
+
+ERROR_PAGE = """\
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <title>THIS DUDE AIN'T THERE</title>
+</head>
+<body>
+    <h1>ERROR: B) </br>DUDE NOT FOUND</h1>
+</body>
+</html>
+"""
+
+
+@app.route("/")
+def index():
+    return render_template_string(INDEX_PAGE, directory=directory)
+
+@app.route('/call-python', methods=['POST'])
+def call_python():
+	result = print_flag()
+	return jsonify({'flag': result})
+
+@app.route("/add", methods=["POST"])
+def add_person():
+    name = request.form.get("name").strip()
+    bio = request.form.get("bio").strip()
+    likes = request.form.get("likes").strip()
+    dislikes = request.form.get("dislikes").strip()
+    if name in directory:
+        name = name + " (Duplicate Dude)"
+    if name and bio and likes and dislikes:
+        directory[name] = bio, likes, dislikes
+    return redirect(url_for("index"))
+
+@app.route("/person/<name>")
+def person_page(name):
+    info = directory.get(name, -1)
+    print(info)
+    if(info == -1):
+        return render_template_string(ERROR_PAGE)
+    bio, likes, dislikes = info
+    return render_template_string(PERSON_PAGE, name=name, bio=bio, likes=likes, dislikes=dislikes)
+
+if __name__ == "__main__":
+    for person in examplePeople:
+        directory[person["name"]] = person["info"]
+    app.run()
