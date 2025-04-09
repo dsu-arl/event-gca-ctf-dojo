@@ -18,3 +18,9 @@ challenges:
 - id: substitution-cipher-decryption
   name: Substitution Cipher Decryption
   allow_privileged: false
+- id: ascii-encoding
+  name: ASCII Encoding
+  allow_privileged: false
+- id: ascii-decoding
+  name: ASCII Decoding
+  allow_privileged: false

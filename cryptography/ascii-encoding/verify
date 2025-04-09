@@ -1,0 +1,61 @@
+#!/opt/pwn.college/python
+import sys
+import os
+import random
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+# Main function to execute the ASCII encoding challenge
+def play_ascii_game():
+    print("Welcome to the ASCII Encoding Challenge!")
+    
+    print("Note that this challenge uses uppercase letters (lowercase letters have different values). Use this table to help you!")
+    
+    print("\nA  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z")
+    print("65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90\n")
+    
+    word_list = [
+        "CODE",
+        "BYTE",
+        "DATA",
+        "BITS",
+        "FLAG",
+        "TEXT",
+        "INFO",
+        "CHAR",
+        "KEYS",
+        "WORD"
+    ]
+
+    word_to_encode = random.choice(word_list).upper()
+
+    print(f"Your task is to encode this word in ASCII decimal values: {word_to_encode}")
+
+
+    encoded_word = []
+
+    for char in word_to_encode:
+        correct_ascii = str(ord(char))
+        while True:
+            user_input = input(f"Encode this character - {char}: ")
+            if user_input == correct_ascii:
+                print("Correct!")
+                encoded_word.append(user_input)
+                break
+            else:
+                print("Incorrect. Try again.")
+                print("Find the letter in the ASCII table, and enter the corresponding number.")
+
+    encoded_result = ' '.join(encoded_word)
+
+    print(f"\nCongratulations, you encoded it correctly! Once encoded, {word_to_encode} becomes {encoded_result}.")
+    print_flag()
+
+# Run the game
+play_ascii_game()
+

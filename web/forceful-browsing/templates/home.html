@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Welcome to our website!</h1>
+        <p>We have lots of interesting articles linked below!</p>
+        <ul>
+            {% for id, page in pages.items() %}
+                {% if page['visible'] %}
+                    <li><a href="{{ url_for('page', id=id)}}">{{ page['name'] }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </body>
+</html>

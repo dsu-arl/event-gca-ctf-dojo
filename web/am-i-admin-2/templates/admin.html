@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Portal</title>
+    </head>
+    <body>
+        <h1>Admin Portal</h1>
+        <p>
+            {% if isadmin %}
+                Hello, admin. Here's your flag: {{ flag }}.
+            {% else %}
+                Only admins can see this page. Be an admin to continue (and you can't do what you did before; we fixed that bug). The login page is <a href="{{ url_for('login')}}">here.</a>
+            {% endif %}
+        </p>
+    </body>
+</html>
