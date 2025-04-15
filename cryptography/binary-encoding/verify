@@ -1,5 +1,7 @@
 #!/usr/bin/exec-suid --real -- /usr/bin/python -I
 import sys
+import os
+import random
 sys.path.append('/challenge')
 
 def print_flag():
