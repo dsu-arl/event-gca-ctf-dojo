@@ -12,6 +12,7 @@ EOF
 
 RUN <<EOF
 	apt update && apt install git binutils -y
+	apt install python3.12 -y
 EOF
 
 ADD --chown=0:0 http://github.com/pwncollege/exec-suid/releases/latest/download/exec-suid /usr/bin/exec-suid
