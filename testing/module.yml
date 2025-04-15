@@ -1,5 +1,0 @@
-name: Testing
-challenges:
-- id: test
-  name: test
-  allow_privileged: false
