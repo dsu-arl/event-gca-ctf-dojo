@@ -25,6 +25,7 @@ we find the binary in the table and replace them with the correct character:
 - 01010010 → R
 - 01001100 → L
 - 01000100 → D
+
 So, the decoded message is: WORLD
 
 ### Challenge Steps
