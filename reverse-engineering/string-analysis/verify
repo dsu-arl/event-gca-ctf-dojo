@@ -17,7 +17,6 @@ correctHash = "e3a7c4dae59461747e6bc287aca85095"
 
 if __name__ == "__main__":
 	guessString = input("Enter the string:").encode('utf-8')
-	# myHash = hashlib.md5(guessString)
 	if hashlib.md5(guessString).hexdigest() == correctHash:
 		print_flag()
 	else:
