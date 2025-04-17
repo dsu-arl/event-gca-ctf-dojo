@@ -23,4 +23,4 @@ Locate the unusual string within the challenge binary `locateTheString`. The str
 
 1. Run `strings` against the challenge binary.
 2. Examine the output and locate the challenge string.
-3. Run verify and when prompted enter the challenge string.
+3. Run the `verify` script and when prompted enter the challenge string.
