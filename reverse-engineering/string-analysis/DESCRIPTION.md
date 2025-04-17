@@ -19,7 +19,8 @@ strings /usr/bin/ssh | more
 The "|" character is called the pipe character, and discussion about piping commands is outside the scope of this challenge. Search "piping commands linux" to learn more.
 
 ## Challenge Steps
-Locate the unusual string within the challenge binary. It will be human readable, but it will also contain special characters to make it stand out a bit more.
-1. Run "strings" against the challenge binary.
+Locate the unusual string within the challenge binary `locateTheString`. The string will be human readable, but it will also contain special characters to make it stand out a bit more. If using the GUI Desktop Workspace option, you will need to navigate to the "challenge" folder with the command: `cd /challenge`
+
+1. Run `strings` against the challenge binary.
 2. Examine the output and locate the challenge string.
 3. Run verify and when prompted enter the challenge string.
