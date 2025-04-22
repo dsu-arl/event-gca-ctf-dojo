@@ -1,5 +1,5 @@
 ## Challenge Description
-This challenge introduces the `strings` command. You will use the command to print the strings from the binary and search the output for a specific word. Provide this word to the "verify" script to receive the flag!
+This challenge introduces the `strings` command. You will use the command to print the strings from the binary and search the output for a specific word. Provide this word to the `strings` script to receive the flag!
 
 ## How It Works
 `strings` is a command line tool that prints all of the strings contained within a binary to the screen, one per line. Humans think of strings as readable text, but this isn't always the case. A lot of what `strings` prints to the screen can be nonsense. For large binaries, analyzing this output can be tedious, but for smaller binaries it is usually simpler.

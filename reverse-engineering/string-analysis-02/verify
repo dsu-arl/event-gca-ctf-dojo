@@ -1,0 +1,23 @@
+#!/usr/bin/exec-suid -- /usr/bin/python3.12 -I
+
+import sys
+sys.path.append('/challenge')
+
+def print_flag():
+	try:
+		with open("/flag", "r") as f:
+			print(f.read())
+	except FileNotFoundError:
+		print("Error: Flag file not found.")
+
+# Add your imports and other code below here
+import hashlib
+
+correctHash = "12ce70feea80ddac84a8a3c804c10586"
+
+if __name__ == "__main__":
+	guessString = input("Enter the string:").encode('utf-8')
+	if hashlib.md5(guessString).hexdigest() == correctHash:
+		print_flag()
+	else:
+		print("Incorrect string, try again!")

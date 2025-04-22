@@ -3,3 +3,6 @@ challenges:
 - id: string-analysis-01
   name: String Analysis 01
   allow_privileged: false
+- id: string-analysis-02
+  name: String Analysis 02
+  allow_privileged: false

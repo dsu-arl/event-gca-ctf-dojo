@@ -9,3 +9,7 @@ The purpose of reverse engineering is to understand the internal workings of the
 ### Analysis Techniques
 
 Broadly, reverse engineering can be divided into two topics: static and dynamic analysis. The purpose of static analysis is to inspect the binary without executing it. This can be important when analyzing malicious software (malware) because you don't want to accidently infect your computer! Tools under this category include: objdump, strings, IDA, Ghidra. Dynamic analysis is the opposite; inspecting how the binary works while it is running (executing.) Tools under this category include debuggers like GDB and WinDBG. Both techniques have pros and cons, and employing both while inspecting a binary is very common. These will be discussed more as needed within the challenges.
+
+### Progression
+
+These challenges will slowly get more complex and utilize more advanced techniques and tools, so jump in and have fun!
