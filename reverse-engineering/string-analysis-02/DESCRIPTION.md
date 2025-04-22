@@ -9,6 +9,8 @@ This challenges gives you the chance to find secret plain-text passwords and gue
 ## Challenge Steps
 Locate the unusual strings within the challenge binary `locateTheStrings`. The string will be human readable, but it will also contain special characters to make it stand out a bit more. If using the GUI Desktop Workspace option, you will need to navigate to the "challenge" folder with the command: `cd /challenge`
 
+If an incorrect string is entered on the command line, there is a possibility the program will pause, or "hang." If this is the case press and hold the "CTRL" button and then press the "C" button. This will terminate the program and you will be able to run it again.
+
 1. Run `strings` against the challenge binary.
 2. Examine the output and locate the passwords.
 3. Enter the passwords in the correct order to get the final password.
