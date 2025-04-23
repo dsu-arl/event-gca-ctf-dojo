@@ -20,4 +20,15 @@ challenges:
   allow_privileged: false
 - id: questionable-des
   name: Questionable DES
+- id: ascii-encoding
+  name: ASCII Encoding
+  allow_privileged: false
+- id: ascii-decoding
+  name: ASCII Decoding
+  allow_privileged: false
+- id: binary-encoding
+  name: Binary Encoding
+  allow_privileged: false
+- id: binary-decoding
+  name: Binary Decoding
   allow_privileged: false
