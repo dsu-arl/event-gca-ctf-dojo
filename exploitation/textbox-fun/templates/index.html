@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't hack me!!!!!!</title>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <h3>The rightmost button below is under construction.</br> 
+        Please don't click it until construction is complete.</br></br> 
+    
+        <i>Note: for developers, use unlockButton() to enable it.</br></i></h3>
+    <form method="POST">
+        <input type="text" name="textbox" placeholder="Type something..." required>
+        <button type="submit">Submit</button>
+        <button onclick= "getSecret(event).then(secret =>{ showFlag(secret, event).then(flag => alert(flag))});" id="GetFlag">Get Flag</button>
+    </form>
+    <script>
+        // Ensure the button remains disabled unless explicitly enabled by JS
+        const button = document.getElementById("GetFlag");
+        const disableLoop = setInterval(() => {
+            button.disabled = true;
+        }, 10); 
+
+        function unlockButton() {
+            const stack = new Error().stack;
+            if (stack.includes("console") || stack.includes("anonymous")) {
+                alert("Nice try! No cheating via console.");
+                return;
+            }
+            clearInterval(disableLoop);
+            button.disabled = false;
+        }
+    </script>
+    {% if message %}
+        <h2>You entered: {{ message | safe}}</h2>
+    {% endif %}
+
+</body>
+</html>

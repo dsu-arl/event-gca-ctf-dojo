@@ -5,3 +5,8 @@ modules:
   name: Cryptography
 - id: steganography
   name: Steganography
+- id: exploitation
+  name: Exploitation
+- id: web
+  name: Web
+  image: copsahl/pwncollege-web
