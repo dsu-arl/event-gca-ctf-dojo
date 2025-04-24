@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&gt;&lt;)))'&gt;</title>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <h2>Atlantis Aquarium Fish Tracker</h2>
+    <p>Here you will find the status of all of our fish as well as the divers maintaining their habitat! If you see any concerns with the fish, please fill out the Fish Health Update form and we will attend to their needs.</p>
+
+
+
+    <div id="fishTitle">
+        <h3>Fish Info:</h3>
+        <div id="fishInfo"></div>
+    </div>
+    
+    <div id="diverTitle">
+        <h3>Diver Info:</h3>
+        <div id="diverInfo"></div>
+    </div>
+
+  
+    <div><h3>Fish Health Update Form: </h3></div>
+    <form id="fishForm">
+        <input type="text" name="Species" placeholder="Enter fish species:" required>
+        <input type="text" name="Concern" placeholder="Enter concern area (Fins/Scales):" required>
+        <input type="text" name="Part" placeholder="Which part is different?" required>
+        <input type="text" name="Status" placeholder="Is the part still there? (y/n)" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        formListener();
+        renderCreatureStatus();
+    </script>
+
+    <style>
+        #fishInfo {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          margin-top: 20px;
+        }
+      
+
+        #diverInfo {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          margin-top: 20px;
+        }
+
+        .fishCard {
+          border: 1px solid #ccc;
+          padding: 10px;
+          width: 250px;
+          border-radius: 8px;
+          background-color: #f0f8ff;
+        }
+
+        .diverCard {
+          border: 1px solid #ccc;
+          padding: 10px;
+          width: 250px;
+          border-radius: 8px;
+          background-color: #f0f8ff;
+        }
+
+        .statusRow {
+          display: flex;
+          gap: 20px;
+          margin-top: 10px;
+        }
+      </style>
+</body>
+</html>

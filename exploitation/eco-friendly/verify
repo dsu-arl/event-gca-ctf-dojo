@@ -1,0 +1,47 @@
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
+import sys
+sys.path.append('/challenge')
+
+def print_flag(jsSecret):
+	if jsSecret!=secret:
+		print("No cheating!")
+	else:	
+		try:
+			with open("/flag", "r") as f:
+				text = f.read()
+				# print(text)
+				return text
+		except FileNotFoundError:
+			print("Error: Flag file not found.")
+
+# Add your imports and other code below here
+from flask import Flask, render_template, request, jsonify
+import secrets
+
+app = Flask(__name__)
+
+def genSecret(length):
+	return secrets.token_urlsafe(length)[:length]
+
+@app.route('/call-python', methods=['POST'])
+def call_python():
+	data = request.json
+	jsSecret = data.get('jsSecret')
+	result = print_flag(jsSecret)
+	return jsonify({'flag': result})
+
+
+@app.route('/get-secret', methods=['POST'])
+def get_secret():
+    return jsonify({'secret': secret})
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+	message = ""
+	if request.method == 'POST':
+		message = request.form['textbox']
+	return render_template('index.html', message=message)
+
+if __name__ == '__main__':
+	secret = genSecret(16)
+	app.run()

@@ -5,6 +5,8 @@ modules:
   name: Cryptography
 - id: steganography
   name: Steganography
+- id: testing
+  name: Testing
 - id: exploitation
   name: Exploitation
 - id: web
