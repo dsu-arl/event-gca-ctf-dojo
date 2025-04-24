@@ -1,0 +1,69 @@
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
+import sys
+import random
+sys.path.append('/challenge')
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def play_binary_game():
+    print("Welcome to the Binary Decoding Challenge!")
+
+    print("Use this table to decode the binary values into uppercase letters:\n")
+    print("Char: A        B        C        D        E        F        G        H        I")
+    print("Dec : 65       66       67       68       69       70       71       72       73")
+    print("Bin : 01000001 01000010 01000011 01000100 01000101 01000110 01000111 01001000 01001001\n")
+
+    print("Char: J        K        L        M        N        O        P        Q        R")
+    print("Dec : 74       75       76       77       78       79       80       81       82")
+    print("Bin : 01001010 01001011 01001100 01001101 01001110 01001111 01010000 01010001 01010010\n")
+
+    print("Char: S        T        U        V        W        X        Y        Z")
+    print("Dec : 83       84       85       86       87       88       89       90")
+    print("Bin : 01010011 01010100 01010101 01010110 01010111 01011000 01011001 01011010\n")
+
+    word_list = [
+        "HELLO",
+        "WORLD",
+        "BINARY",
+        "INPUT",
+        "DEBUG",
+        "SHIFT",
+        "VALUE",
+        "ARRAY",
+        "TOKEN",
+        "STACK"
+    ]
+
+    word_to_decode = random.choice(word_list).upper()
+
+    # Encode the word in binary
+    encoded_binary = [format(ord(char), '08b') for char in word_to_decode]
+    encoded_output = ' '.join(encoded_binary)
+
+    print(f"Your task is to decode this binary message: {encoded_output}")
+
+    decoded_word = []
+
+    for index, bin_val in enumerate(encoded_binary):
+        while True:
+            user_input = input(f"Decode this binary value - {bin_val}: ").upper()
+            expected_char = word_to_decode[index]
+            if user_input == expected_char:
+                print("Correct!")
+                decoded_word.append(user_input)
+                break
+            else:
+                print("Incorrect. Try again.")
+                print("Use the binary table above to find the correct letter.")
+
+    final_decoded = ''.join(decoded_word)
+
+    print(f"\nWell done! The decoded word is: {final_decoded}")
+    print_flag()
+
+play_binary_game()
