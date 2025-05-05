@@ -15,3 +15,6 @@ challenges:
 - id: textbox-fun
   name: Textbox Fun
   allow_privileged: false
+- id: eco-friendly
+  name: Eco Friendly
+  allow_privileged: false
