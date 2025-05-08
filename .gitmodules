@@ -1,0 +1,3 @@
+[submodule "pacePythonTester"]
+	path = pacePythonTester
+	url = https://github.com/dsu-arl/pacePythonTester
