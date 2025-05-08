@@ -33,3 +33,5 @@ modules:
   name: Python Functions
 - id: python-file-io
   name: Python File I/O
+- id: python-modules-and-libraries
+  name: Python Modules and Libraries
