@@ -35,3 +35,5 @@ modules:
   name: Python File I/O
 - id: python-sockets
   name: Python Sockets
+- id: python-webscraping
+  name: Python Webscraping
