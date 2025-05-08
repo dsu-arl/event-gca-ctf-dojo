@@ -23,3 +23,5 @@ modules:
   name: OSINT
 - id: python-input-and-output
   name: Python Input and Output
+- id: python-math-operators
+  name: Python Math Operators
