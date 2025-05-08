@@ -31,3 +31,5 @@ modules:
   name: Python Loops
 - id: python-functions
   name: Python Functions
+- id: python-file-io
+  name: Python File I/O
