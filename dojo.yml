@@ -25,3 +25,5 @@ modules:
   name: Python Input and Output
 - id: python-math-operators
   name: Python Math Operators
+- id: python-conditionals
+  name: Python Conditionals
