@@ -27,3 +27,5 @@ modules:
   name: Python Math Operators
 - id: python-conditionals
   name: Python Conditionals
+- id: python-loops
+  name: Python Loops
