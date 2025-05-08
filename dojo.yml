@@ -19,3 +19,5 @@ modules:
   name: Linux Fundamentals
 - id: linux-admin
   name: Linux Admin
+- id: osint
+  name: OSINT
