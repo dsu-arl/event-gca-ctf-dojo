@@ -1,8 +1,11 @@
 name: web
 challenges:
-  - id: am-i-admin
-    name: Am I Admin?
-  - id: am-i-admin-2
-    name: Am I Admin?
-  - id: forceful-browsing
-    name: Forceful Browsing
+- id: am-i-admin
+  name: Am I Admin?
+- id: am-i-admin-2
+  name: Am I Admin?
+- id: forceful-browsing
+  name: Forceful Browsing
+- id: scary-tables
+  name: Scary Tables
+  allow_privileged: false
