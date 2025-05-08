@@ -17,3 +17,5 @@ modules:
   image: whatupdoc6130/pwncollege:stringsv1
 - id: linux-fundamentals
   name: Linux Fundamentals
+- id: linux-admin
+  name: Linux Admin
