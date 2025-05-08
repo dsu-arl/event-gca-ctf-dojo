@@ -5,8 +5,10 @@ challenges:
   image: copsahl/pwncollege-web
 - id: am-i-admin-2
   name: Am I Admin?
+  image: copsahl/pwncollege-web
 - id: forceful-browsing
   name: Forceful Browsing
+  image: copsahl/pwncollege-web
 - id: directory-of-cool-dudes
   name: Directory of Cool Dudes
   allow_privileged: false
