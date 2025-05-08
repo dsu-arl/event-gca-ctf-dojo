@@ -21,3 +21,5 @@ modules:
   name: Linux Admin
 - id: osint
   name: OSINT
+- id: python-input-and-output
+  name: Python Input and Output
