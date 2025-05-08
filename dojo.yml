@@ -29,3 +29,5 @@ modules:
   name: Python Conditionals
 - id: python-loops
   name: Python Loops
+- id: python-functions
+  name: Python Functions
