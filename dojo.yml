@@ -15,3 +15,5 @@ modules:
 - id: reverse-engineering
   name: Reverse Engineering
   image: whatupdoc6130/pwncollege:stringsv1
+- id: linux-fundamentals
+  name: Linux Fundamentals
