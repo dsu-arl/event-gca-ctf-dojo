@@ -1,6 +1,8 @@
 id: ctf
 name: CTF
 modules:
+- id: start-here!
+  name: Start Here!
 - id: linux-fundamentals
   name: Linux Fundamentals
 - id: linux-admin
