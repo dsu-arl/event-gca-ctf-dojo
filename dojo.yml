@@ -1,12 +1,14 @@
 id: ctf
 name: CTF
 modules:
+- id: linux-fundamentals
+  name: Linux Fundamentals
+- id: linux-admin
+  name: Linux Admin
 - id: cryptography
   name: Cryptography
 - id: steganography
   name: Steganography
-- id: testing
-  name: Testing
 - id: exploitation
   name: Exploitation
 - id: web
@@ -15,10 +17,6 @@ modules:
 - id: reverse-engineering
   name: Reverse Engineering
   image: whatupdoc6130/pwncollege:stringsv1
-- id: linux-fundamentals
-  name: Linux Fundamentals
-- id: linux-admin
-  name: Linux Admin
 - id: osint
   name: OSINT
 - id: python-input-and-output
