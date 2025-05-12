@@ -4,15 +4,14 @@ Programming involves alot more than just doing math on numbers. Another importan
     - `a==b`, returns `true` if `a` is the same as `b`
 - **Not Equal:** `!=`
     - `a!=b`, returns `true` if `a` is not the same as `b`
-
-| Operator | Name | Example |
-|---|---|---|
-| == | Equal | `a==b`, returns `true` if `a` is the same as `b` |
-| != | Not Equal | `a!=b`, returns `true` if `a` is not the same as `b` |
-| > | Greater Than | `a>b`, returns `true` if `a` is greater than `b` |
-| < | Less Than | `a<b`, returns `true` if `a` is less than `b` |
-| >= | Greater Than or Equal to | `a>=b`, returns `true` if `a` is greater than or equal to `b` |
-| <= | Less Than or Equal to | `a<=b`, returns `true` if `a` is less than or equal to `b` |
+- **Greater Than:** `>`
+    - `a>b`, returns `true` if `a` is greater than `b` 
+- **Less Than:** `<`
+    - `a<b`, returns `true` if `a` is less than `b` 
+- **Greater Than or Equal to:** `a>=b`
+    - `a>=b`, returns `true` if `a` is greater than or equal to `b` 
+- **Less Than or Equal to:** `a<=b`
+    - `a<=b`, returns `true` if `a` is less than or equal to `b` 
 
 Comparison Operators also leads us to a new data type! These comparisons return a **boolean** result. Boolean variables can be either `True` or `False` - only one or the other at any given time. 
 This means that instead of resulting in an integer or a float, comparisons result in a boolean or `bool`. You can treat this result like a normal variable - you can store it, print it, and update it.
