@@ -1,9 +1,10 @@
 Lastly, Python also supports **logical operators**. These allow you to combine two or more conditionals in one statement. These are the two supported logical operators we care about at this time:
 
-| Operator | Name | Example | Meaning |
-|---|---|---|---|
-| and | AND | CONDITIONAL1 and CONDITIONAL2 | Both CONDITIONAL1 `and` CONDITIONAL2 must be True to pass. If one is false it fails.
-| or | OR | CONDITIONAL1 or CONDITIONAL2 | Either CONDITIONAL 1 `or` CONDITIONAL2 can be True to pass. If both are false it fails.
+- **AND:** `and` (e.g., `CONDITIONAL1 and CONDITIONAL2`)
+    - Both CONDITIONAL1 `and` CONDITIONAL2 must be True to pass. If one is false it fails.
+
+- **OR:** `or` (e.g., `CONDITIONAL1 or CONDITIONAL2`) 
+    - Either CONDITIONAL 1 `or` CONDITIONAL2 can be True to pass. If both are false it fails.
 
 **Example of Python Logical Operators:**
 ```
