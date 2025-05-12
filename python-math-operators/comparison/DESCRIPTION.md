@@ -1,6 +1,9 @@
 Programming involves alot more than just doing math on numbers. Another important aspect to programming is comparison. Comparison Operators return `True` or `False` based on the comparison being made. We will cover this in more detail later, but for now understanding how they look and what they return is important. The following **Comparison Operators** are important to know:
 
-- Equal: `==` - `a==b`, returns `true` if `a` is the same as `b` |
+- **Equal:** `==` 
+    - `a==b`, returns `true` if `a` is the same as `b`
+- **Not Equal:** `!=`
+    - `a!=b`, returns `true` if `a` is not the same as `b`
 
 | Operator | Name | Example |
 |---|---|---|
