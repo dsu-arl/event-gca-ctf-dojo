@@ -1,14 +1,12 @@
 Now that you know how to get input from a user, you need to learn how to do things with that input. The first thing we are going to cover is math operators. Python supports many different **Math Operators**, the following are what we care about right now:
 
-| Operator | Name | Example |
-|---|---|---|
-| + | Addition | `a+b` |
-| - | Subtraction | `a-b` |
-| * | Multiplication | `a*b` |
-| / | Division | `a/b` |
-| % | Modulus | `a*b` |
-| ** | Exponent | `a**b` |
-| // | Floor Division | `a//b` |
+- *Addition*: `+` (`a+b`)
+- *Subtraction*: `-` (`a-b`)
+- *Multiplication*: `*` (`a*b`)
+- *Division*: `/` (`a/b`)
+- *Modulus*: `%` (`a%b`)
+- *Exponent*: `**` (`a**b`)
+- *Floor Division*: `//` (`a//b`)
 
 You likely have used every operator before - besides Modulus and Floor Division. Modulus is like division, but returns the remainder. For example, `4%2` would return 0 since `2` can fit into `4` exactly twice (with a remainder of 0). What would `5%2` return? 
 
