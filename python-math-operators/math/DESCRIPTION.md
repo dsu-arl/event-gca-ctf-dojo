@@ -1,12 +1,12 @@
 Now that you know how to get input from a user, you need to learn how to do things with that input. The first thing we are going to cover is math operators. Python supports many different **Math Operators**, the following are what we care about right now:
 
-- **Addition:** `+` (e.g., `a+b`)
-- **Subtraction:** `-` (e.g., `a-b`)
-- **Multiplication:** `*` (e.g., `a*b`)
-- **Division:** `/` (e.g., `a/b`)
-- **Modulus:** `%` (e.g., `a%b`)
-- **Exponent:** `**` (e.g., `a**b`)
-- **Floor Division:** `//` (e.g., `a//b`)
+- **Addition:** `+` (e.g., `a + b`)
+- **Subtraction:** `-` (e.g., `a - b`)
+- **Multiplication:** `*` (e.g., `a * b`)
+- **Division:** `/` (e.g., `a / b`)
+- **Modulus:** `%` (e.g., `a % b`)
+- **Exponent:** `**` (e.g., `a ** b`)
+- **Floor Division:** `//` (e.g., `a // b`)
 
 You likely have used every operator before - besides Modulus and Floor Division. Modulus is like division, but returns the remainder. For example, `4%2` would return 0 since `2` can fit into `4` exactly twice (with a remainder of 0). What would `5%2` return? 
 
@@ -36,8 +36,6 @@ Use python to let the user enter a number and detect if that number is odd or ev
 1. Create a new file with the file extension `.py`
 2. Write the python code to get a number from the user (Don't forget to typecast)
 3. Use modulus to show if the number is odd or even. Your program should print `0` for even and `1` for odd. *(Remember even numbers are always divisible by two)*
-4. Test your code with `python yourFile.py`
-5. Verify your solution with `verify yourFile.py`
 ```bash
 # example output
 Please enter a number: 5
@@ -49,3 +47,5 @@ Please enter a number: 5
 Please enter a number: 8
 0
 ```
+4. Test your code with `python yourFile.py`
+5. Verify your solution with `verify yourFile.py`
