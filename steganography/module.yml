@@ -1,5 +1,0 @@
-name: steganography
-challenges:
-- id: smooth-pixel
-  name: Smooth Pixel
-  allow_privileged: false

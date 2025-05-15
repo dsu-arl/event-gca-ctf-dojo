@@ -32,3 +32,5 @@ challenges:
   allow_privileged: false
 - id: questionable-des
   name: Questionable DES
+- id: smooth-pixel
+  name: Steganography - Smooth Pixel
