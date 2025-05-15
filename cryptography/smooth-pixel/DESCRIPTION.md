@@ -6,5 +6,5 @@ As Eli examined it closer, he realized that the painting wasn’t just a work of
 
 What would he uncover? Only careful observation will reveal the hidden message within.
 
-## Challenge Instructions
+## Challenge Steps 
 1. There is an image file named "challenge.png" in your home directory. The flag is hidden within. Find and submit the flag to pass this challenge!
