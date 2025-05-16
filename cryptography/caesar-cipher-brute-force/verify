@@ -1,0 +1,57 @@
+#!/opt/pwn.college/python
+import sys
+import os
+import random
+import string
+from pathlib import Path
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def caesar_cipher_shift(word, shift):
+    shifted_word = ""
+    for char in word:
+        if char.isalpha():  # Only shift alphabetic characters
+            offset = ord('A') if char.isupper() else ord('a')
+            shifted_char = chr((ord(char) - offset + shift) % 26 + offset)
+            shifted_word += shifted_char
+        else:
+            shifted_word += char  # Non-alphabet characters remain unchanged
+    return shifted_word
+
+# Main function to execute the cipher game
+def play_cipher_game():
+
+    # Get the path to the .config file
+    config_path = Path(__file__).parent / ".config"
+
+    # Read and process the lines from the .config file
+    lines = config_path.read_text().splitlines()
+
+    # Extract the word and the number
+    secret = lines[0].strip().upper()  # First line as uppercase word
+    shift = int(lines[1].strip())  # Second line as an integer
+
+    # Encrypt the word and print the ciphertext
+    encrypted_secret = caesar_cipher_shift(secret, shift)
+    print(f"What if you aren't given the shift amount?")
+    print("For this challenge you'll have to use frequency analysis or brute forcing to decode the secret word!")
+    print("(Hint: All secret words are types of animals - this will help you confirm that your guess is correct)")
+    print(f"\nDecrypt this word: {encrypted_secret}")
+
+    # Get the user's guess and compare it to the original word
+    guess = input("Enter your decrypted word: ").upper()
+    if guess == secret:
+        print("\nCongratulations, you decrypted it correctly!")
+        print("Here's your flag!\n")
+        print_flag()
+    else:
+        print("\nSorry, that was incorrect. Better luck next time!")
+
+# Run the game
+play_cipher_game()
+

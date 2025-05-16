@@ -1,0 +1,63 @@
+#!/usr/bin/env python3.8
+from PIL import Image
+
+def get_flag():
+  with open("/flag", "r") as f:
+    return f.read()
+
+def encode():
+  im = Image.open("/challenge/smooth.png")
+
+  R,G,B = 0,1,2
+  width, height = im.size
+  gVal = lambda x : int(round(x-.1,-1))
+
+  usable = pixelcount = len( list(im.getdata()) )
+
+  # smooth the pixels
+  for x in range(0, width):
+    for y in range(0, height):
+      coord = (x, y)
+      pix = im.getpixel( coord )
+
+      colors = ( gVal(pix[R]), gVal(pix[G]), gVal(pix[B]) )
+      if colors[0] == 250 or colors[1] == 250 or colors[2] == 250:
+        usable -= 1
+
+      im.putpixel( coord, colors )
+
+  # Write the flag
+  text = get_flag()
+
+  if len(text) > usable:
+    print("You need a larger image or less text!")
+    exit(1)
+
+  charz = ['{:03}'.format(ord(ch)) for ch in text]
+  charMax = len(charz)
+  charPos = 0
+  for x in range(0, width):
+    for y in range(0, height):
+
+      if charPos >= charMax:
+        break
+
+      coord = (y, x)
+      pix = im.getpixel( coord )
+      if pix[0] < 250 and pix[1] < 250 and pix[2] < 250:
+        colors = (
+          pix[R]+int(charz[charPos][0]),
+          pix[G]+int(charz[charPos][1]),
+          pix[B]+int(charz[charPos][2])
+        )
+
+        im.putpixel( coord, colors )
+        charPos += 1
+
+    if charPos >= charMax:
+      break
+
+  im.save("/home/hacker/challenge.png")
+
+if __name__ == "__main__":
+  encode()

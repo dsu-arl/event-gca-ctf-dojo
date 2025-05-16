@@ -1,0 +1,63 @@
+#!/opt/pwn.college/python
+import sys
+import os
+import random
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+# Main function to execute the ASCII decoding challenge
+def play_ascii_game():
+    print("Welcome to the ASCII Decoding Challenge!")
+
+    print("Note that this challenge uses uppercase letters (lowercase letters have different values). Use this table to help you!")
+
+    print("\nA  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z")
+    print("65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90\n")
+
+    word_list = [
+        "APPLE",
+        "CANAL",
+        "CLOUD",
+        "DREAM",
+        "EARLY",
+        "FIELD",
+        "GRAPE",
+        "HOUSE",
+        "ISLE",
+        "JUMPY"
+    ]
+
+    word_to_decode = random.choice(word_list).upper()
+
+    # Encode the word in ASCII
+    encoded_word = [str(ord(char)) for char in word_to_decode]
+    encoded_result = ' '.join(encoded_word)
+
+    print(f"Your task is to decode this word from the following ASCII values: {encoded_result}")
+
+    decoded_word = []
+    
+    for index, ascii_value in enumerate(encoded_word):
+        while True:
+            user_input = input(f"Decode this ASCII value - {ascii_value}: ")
+            if user_input.upper() == word_to_decode[index]:
+                print("Correct!")
+                decoded_word.append(user_input.upper())
+                break
+            else:
+                print("Incorrect. Try again.")
+                print("Look up the ASCII table and decode the correct letter.")
+
+    decoded_result = ''.join(decoded_word)
+
+    print(f"\nCongratulations, you decoded it correctly! The decoded word is {decoded_result}.")
+    print_flag()
+
+# Run the game
+play_ascii_game()
+

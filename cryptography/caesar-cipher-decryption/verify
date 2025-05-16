@@ -1,0 +1,82 @@
+#!/opt/pwn.college/python
+import sys
+import os
+import re
+import random
+import string
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+def caesar_cipher_shift(word, shift):
+    shifted_word = ""
+    for char in word:
+        if char.isalpha():  # Only shift alphabetic characters
+            offset = ord('A') if char.isupper() else ord('a')
+            # Shift character within the alphabet range using modulo 26
+            shifted_char = chr((ord(char) - offset + shift) % 26 + offset)
+            shifted_word += shifted_char
+        else:
+            shifted_word += char  # Non-alphabet characters remain unchanged
+    return shifted_word
+
+# Display welcome message and alphabet with indices
+def display_alphabet_with_indices():
+    letters = "  ".join(string.ascii_uppercase)
+    numbers = "  ".join(str(i) for i in range(1, 10))
+    numbers2 = " ".join(str(i) for i in range(10, 27))
+    print(letters)
+    print(numbers + " " + numbers2)
+
+# Main function to execute the cipher game
+def play_cipher_game():
+    print("Welcome to the Caesar Cipher Shifter!")
+    word_list = [
+        "Apple",
+        "Mango",
+        "Grape",
+        "Peach",
+        "Berry",
+        "Plum",
+        "Lemon",
+        "Banana",
+        "Cherry",
+        "Kiwi",
+        "Apricot",
+        "Papaya",
+        "Coconut",
+        "Orange",
+        "Melon"
+    ]
+
+    secret = random.choice(word_list).upper()
+    shift = random.randint(3, 10)
+
+    shifted_word = caesar_cipher_shift(secret, shift)
+
+    print(f"Your task is to decipher this secret word: {shifted_word}")
+    print("You can use this table to help you!\n")
+    display_alphabet_with_indices()
+
+    print(f"\nYour secret word has been shifted by +{shift}.")
+    print(f"To undo the shifting, move each letter by -{shift}.\n")
+
+    # Prompt the user to guess each character
+    for original_char, shifted_char in zip(secret, shifted_word):
+        guess = input(f"Decipher this character - {shifted_char}: ").upper()
+        if guess != original_char:
+            print("\nSorry, that letter was not correct. Try again!")
+            print(f"The secret word {shifted_word} shifted by -{shift} would decrypt to {secret}.")
+            print("Hint: For each letter, look at the table and subtract the amount it has been shifted by.")
+            print("And remember, the cipher will wrap around if you need to subtract past the letter 'A'")
+            return
+
+    print(f"\nCongratulations, you win! The original word was {secret}")
+    print_flag()
+
+# Run the game
+play_cipher_game()

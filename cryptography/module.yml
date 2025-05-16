@@ -1,1 +1,36 @@
 name: Cryptography
+challenges:
+- id: caesar-cipher-encryption
+  name: Caesar Cipher Encoding
+  allow_privileged: false
+- id: caesar-cipher-decryption
+  name: Caesar Cipher Decoding
+  allow_privileged: false
+- id: caesar-cipher-scripting
+  name: Caesar Cipher Scripting
+  allow_privileged: false
+- id: caesar-cipher-brute-force
+  name: Caesar Cipher Brute Force
+  allow_privileged: false
+- id: substitution-cipher-encryption
+  name: Substitution Cipher Encoding
+  allow_privileged: false
+- id: substitution-cipher-decryption
+  name: Substitution Cipher Decoding
+  allow_privileged: false
+- id: ascii-encoding
+  name: ASCII Encoding
+  allow_privileged: false
+- id: ascii-decoding
+  name: ASCII Decoding
+  allow_privileged: false
+- id: binary-encoding
+  name: Binary Encoding
+  allow_privileged: false
+- id: binary-decoding
+  name: Binary Decoding
+  allow_privileged: false
+- id: questionable-des
+  name: Questionable DES
+- id: smooth-pixel
+  name: Steganography - Smooth Pixel
