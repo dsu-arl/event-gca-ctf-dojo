@@ -11,4 +11,15 @@ challenges:
   image: copsahl/pwncollege-web
 - id: scary-tables
   name: Scary Tables
+- id: textbox-fun
+  name: Textbox Fun
+  allow_privileged: false
+- id: eco-friendly
+  name: Eco Friendly
+  allow_privileged: false
+- id: directory-of-cool-dudes
+  name: Directory of Cool Dudes
+  allow_privileged: false
+- id: cross-contamination
+  name: Cross-Contamination
   allow_privileged: false
