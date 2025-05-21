@@ -2,10 +2,13 @@ name: web
 challenges:
 - id: am-i-admin
   name: Am I Admin?
+  image: copsahl/pwncollege-web
 - id: am-i-admin-2
   name: Am I Admin?
+  image: copsahl/pwncollege-web
 - id: forceful-browsing
   name: Forceful Browsing
+  image: copsahl/pwncollege-web
 - id: scary-tables
   name: Scary Tables
   allow_privileged: false
