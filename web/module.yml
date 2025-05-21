@@ -9,6 +9,8 @@ challenges:
 - id: forceful-browsing
   name: Forceful Browsing
   image: copsahl/pwncollege-web
+- id: scary-tables
+  name: Scary Tables
 - id: textbox-fun
   name: Textbox Fun
   allow_privileged: false

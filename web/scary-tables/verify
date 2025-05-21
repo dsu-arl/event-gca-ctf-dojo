@@ -1,0 +1,80 @@
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
+import sys
+sys.path.append('/challenge')
+
+def print_flag():
+    try:
+        with open("/flag", "r") as f:
+            print(f.read())
+    except FileNotFoundError:
+        print("Error: Flag file not found.")
+
+# Add your imports and other code below here
+from flask import Flask, request, render_template_string
+import sqlite3
+import hashlib
+
+
+app = Flask(__name__)
+def init_db():
+    conn = sqlite3.connect('ctf.db')
+    c = conn.cursor()
+    c.execute('DROP TABLE IF EXISTS users')
+    c.execute('''
+        CREATE TABLE users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT,
+            password TEXT
+        )
+    ''')
+    c.execute("INSERT INTO users (username, password) VALUES ('bobbyTables', '3fc5c4334ab955da1821c0880ed8fe1b')")
+    conn.commit()
+    conn.close()
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    message = ''
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        passHash = hashlib.md5(password.encode("utf-8"))
+        passHash = passHash.hexdigest()
+
+        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{passHash}'"
+        conn = sqlite3.connect('ctf.db')
+        c = conn.cursor()
+        c.execute(query)
+        result = c.fetchone()
+        conn.close()
+
+        if result:
+            message = 'Login success! Check console for flag.'
+            print_flag()
+        else:
+            message = 'Invalid credentials.'
+
+    return render_template_string('''
+        <h2>Login</h2>
+         <script>function showPass(){
+                var x = document.getElementById("passInp"); 
+                if(x.type === "password") {
+                    x.type = "text";
+                } 
+                else {
+                    x.type = "password";
+                }
+            }
+            </script>
+        <form method="POST">
+            Username: <input name="username" placeholder="Format: firstnameLastname"><br>
+            Password: <input id="passInp" name="password" type="password"><input type="checkbox" onclick="showPass()">Show Password<br>
+            <input type="submit" value="Login">
+           
+        </form>
+        <p>{{ message }}</p>
+    ''', message=message)
+
+if __name__ == '__main__':
+    init_db()
+    app.run()
