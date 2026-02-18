@@ -1,36 +1,195 @@
-id: ctf
-name: CTF
-modules:
-- id: start-here
-  name: Start Here!
-- id: linux-fundamentals
-  name: Linux Fundamentals
-- id: linux-admin
-  name: Linux Admin
-- id: cryptography
-  name: Cryptography
-- id: web
-  name: Web
-- id: reverse-engineering
-  name: Reverse Engineering
-  image: whatupdoc6130/pwncollege:stringsv1
-- id: osint
-  name: OSINT
-- id: python-input-and-output
-  name: Python Input and Output
-- id: python-math-operators
-  name: Python Math Operators
-- id: python-conditionals
-  name: Python Conditionals
-- id: python-loops
-  name: Python Loops
-- id: python-functions
-  name: Python Functions
-- id: python-file-io
-  name: Python File I/O
-- id: python-sockets
-  name: Python Sockets
-- id: python-webscraping
-  name: Python Webscraping
-- id: python-objects
-  name: Python Objects
+id: gca-ctf
+name: GCA Roadshow CTF
+type: private
+modules: 
+  - import:
+      dojo: welcome 
+      module: welcome
+  - import:
+      dojo: linux~cf6cc015 
+      module: linux-basics
+  - id: python
+    name: Python Programming
+    challenges:
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: printing
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: variables
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: format-print
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: user-input
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: type-casting
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: knowledgechecki-io
+        name: Knowledge Check I (Input/Output)
+      - import:
+          dojo: python-programming~7745aa00
+          module: input-and-output
+          challenge: knowledgecheckii-io
+        name: Knowledge Check II (Input/Output)
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: math
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: floor-division
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: geometry
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: comparison
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: knowledgechecki-math
+        name: Knowledge Check I (Math)
+      - import:
+          dojo: python-programming~7745aa00
+          module: math-operators 
+          challenge: knowledgecheckii-math
+        name: Knowledge Check II (Math)
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: if-statements 
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: if-else-statements 
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: nested 
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: else-if-blocks 
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: logical-operators 
+      - import:
+          dojo: python-programming~7745aa00
+          module: conditionals 
+          challenge: knowledgechecki-conditionals 
+        name: Knowledge Check I (Conditionals)
+      - import:
+          dojo: python-programming~7745aa00
+          module: loops 
+          challenge: while 
+      - import:
+          dojo: python-programming~7745aa00
+          module: loops 
+          challenge: lists 
+      - import:
+          dojo: python-programming~7745aa00
+          module: loops 
+          challenge: range 
+      - import:
+          dojo: python-programming~7745aa00
+          module: loops 
+          challenge: for 
+      - import:
+          dojo: python-programming~7745aa00
+          module: loops 
+          challenge: knowledgechecki-loops 
+        name: Knowledge Check I (Loops)
+  - import:
+      dojo: cyber-security~59368da7
+      module: encoding
+  - import:
+      dojo: cyber-security~59368da7
+      module: osint
+  - import:
+      dojo: cyber-security~59368da7
+      module: web
+  - id: pwn-re-1
+    name: PWN/RE
+    challenges:
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: buffer-overflow
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: magic-number
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: reverse-password-plaintext
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: reverse-password-backward
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: reverse-password-cipher
+      - import:
+          dojo: cyber-security~59368da7
+          module: pwn
+          challenge: icky-input 
+  - id: forensics
+    name: Forensics
+    challenges:
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: grep-master 
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: unlock-the-vault
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: locked-treasure-chest
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: the-artists-clue
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: code-cracker
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: chatty-server
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: secret-message-in-photo
+      - import:
+          dojo: cyber-security~59368da7
+          module: forensics
+          challenge: hidden-treasures-in-the-picture
+      - import:
+          dojo: dsu-homecoming~064fa793
+          module: forensics
+          challenge: findthegeneral
+      - import:
+          dojo: dsu-homecoming~064fa793
+          module: forensics
+          challenge: findthegeneralii
+
